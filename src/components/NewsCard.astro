@@ -1,0 +1,40 @@
+---
+const { news } = Astro.props;
+---
+
+<a
+  href={news.link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="block h-full outline-none hover:scale-[1.02] transition-transform duration-200 group"
+>
+  <article
+    class="h-full flex flex-col
+    bg-zinc-950/50
+    border border-zinc-800
+    rounded-lg p-5
+    transition-all duration-200
+    group-hover:border-zinc-600"
+  >
+    <h2
+      class="text-base font-medium text-zinc-50
+      mb-3 line-clamp-2
+      group-hover:text-blue-400 transition-colors"
+    >
+      <span class="text-zinc-700 font-bold">$ </span>
+      {news.title}
+    </h2>
+
+    <p
+      class="text-zinc-300
+      text-sm grow
+      line-clamp-3 mb-4 font-normal"
+    >
+      {news.contentSnippet || "No description available"}
+    </p>
+
+    <time class="text-xs text-zinc-600">
+      {news.pubDate ? new Date(news.pubDate).toLocaleDateString() : "Undated"}
+    </time>
+  </article>
+</a>

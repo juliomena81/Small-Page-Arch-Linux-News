@@ -1,0 +1,22 @@
+# Dependencies and Logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Compilation and Output
+dist/
+.astro/
+.svelte-kit/
+
+# Editor and OS
+.vscode/
+.DS_Store
+*.swp
+*~
+
+# Environmental Variables
+.env
+.env.*
+!.env.example

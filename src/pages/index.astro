@@ -1,0 +1,69 @@
+---
+import Parser from "rss-parser";
+import NewsCard from "../components/NewsCard.astro";
+import Layout from "../layouts/Layout.astro";
+
+const parser = new Parser();
+let latestNews = [];
+let fetchError = null;
+
+try {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+  const feed = await parser.parseURL("https://archlinux.org/feeds/news/");
+
+  clearTimeout(timeoutId);
+  if (feed && feed.items) {
+    latestNews = feed.items.slice(0, 6);
+  }
+} catch (error) {
+  console.error("Error retrieving the Arch Linux feed:", error.message);
+  fetchError =
+    "The news could not be loaded at this time. The Arch Linux server may be limiting requests or temporarily unavailable.";
+}
+---
+
+<Layout>
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <div
+      class="bg-zinc-950 border border-zinc-800
+      rounded-xl shadow-2xl overflow-hidden
+      font-mono"
+    >
+      <div
+        class="border-b border-zinc-800
+        bg-zinc-900 px-4 py-2.5 flex items-center justify-between
+        text-zinc-500 text-xs tracking-wider"
+      >
+        <div class="flex items-center gap-1.5">
+          <div class="w-3 h-3 rounded-full bg-red-500 opacity-60"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-400 opacity-60"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500 opacity-60"></div>
+        </div>
+        <div>archlinux.org/news - newsfetch.log</div>
+        <div class="w-6"></div>
+      </div>
+
+      <div class="p-6">
+        {
+          fetchError ? (
+            <div class="text-red-400 text-sm border border-red-900/50 bg-red-950/20 p-4 rounded-lg">
+              <span class="font-bold">Error:</span> {fetchError}
+            </div>
+          ) : (
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {latestNews.length > 0 ? (
+                latestNews.map((newsItem) => <NewsCard news={newsItem} />)
+              ) : (
+                <div class="text-zinc-500 col-span-full">
+                  No news is available or the feed is empty.
+                </div>
+              )}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </main>
+</Layout>
