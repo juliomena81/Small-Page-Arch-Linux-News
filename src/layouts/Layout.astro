@@ -1,16 +1,51 @@
 ---
 import Header from "../components/Header.astro";
 import "../styles/global.css";
+
+const siteTitle = "Arch Linux Feeds";
+const siteDescription =
+  "Minimalist terminal-style reader for following official Arch Linux news.";
+const siteUrl = "https://juliomena81.github.io/Small-Page-Arch-Linux-News/";
+const ogImageUrl = `${siteUrl}og-image.png`;
 ---
 
 <!doctype html>
-<html lang="en" style="color-scheme: dark;">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arch Linux Feeds</title>
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link
+      rel="preload"
+      href="/fonts/fira-code-v27-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/fonts/jetbrains-mono-v24-latin-regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:image" content={ogImageUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
   </head>
+
   <body class="bg-[#0f1115] text-zinc-300 antialiased min-h-screen">
     <Header />
     <slot />

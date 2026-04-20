@@ -9,9 +9,9 @@ Designed with a terminal-inspired interface, it aims to be fast, lightweight, an
 Made with modern tools, but keeping the weight to a minimum:
 
 - **Framework:** Astro 6.
-- **Estilos:** Tailwind CSS 4.x.
-- **JavaScript en el cliente:** Zero. Everything is static HTML and CSS.
-- **Modo Claro:** It doesn't exist. The terminals are dark, and so is this website.
+- **Styles:** Tailwind CSS 4.x.
+- **Client-side JavaScript:** Zero. Everything is static HTML and CSS.
+- **Clear Mode:** It doesn't exist. The terminals are dark, and so is this website.
 
 ## How to test it on your machine
 
@@ -20,7 +20,7 @@ If for some strange reason you want to run this locally, it's as easy as:
 1. Clone the repo:
 2. 
    ```bash
-   git clone [https://github.com/juliomena81/Small-Page-Arch-Linux-News.git](https://github.com/juliomena81/Small-Page-Arch-Linux-News.git)
+   git clone https://github.com/juliomena81/Small-Page-Arch-Linux-News.git
    cd arch-feeds
    ```
 
