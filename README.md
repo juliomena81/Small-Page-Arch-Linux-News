@@ -18,20 +18,20 @@ Made with modern tools, but keeping the weight to a minimum:
 If for some strange reason you want to run this locally, it's as easy as:
 
 1. Clone the repo:
-2. 
+ 
    ```bash
    git clone https://github.com/juliomena81/Small-Page-Arch-Linux-News.git
    cd arch-feeds
    ```
 
-3. Install the dependencies:
-4. 
+2. Install the dependencies:
+ 
    ```bash
    npm install
    ```
 
-5. Start the server:
-6. 
+3. Start the server:
+ 
    ```bash
    npm run dev
    ```
